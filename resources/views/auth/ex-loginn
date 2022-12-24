@@ -1,0 +1,50 @@
+<div class="card card-bordered">
+    <div class="card-inner card-inner-lg">
+        <div class="nk-block-head">
+            <div class="nk-block-head-content">
+                <h5 class="nk-block-title">Espace de connexion</h5>
+
+            </div>
+        </div>
+        <form action="{{route('login')}}" method="POST">
+            @csrf
+
+            <div class="form-group">
+                <div class="form-label-group">
+                    <label class="form-label" for="email">Email  @error('email')
+                        <small style="color:red;">{{$message}}</small>
+
+                    @enderror</label>
+                </div>
+                <div class="form-control-wrap">
+                    <input type="email"  class="form-control form-control-lg"
+
+               name="email"   id="email" placeholder="Entrer votre adresse E-mail" value="{{old('email')}}"  required autocomplete="email" autofocus >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-label-group">
+                    <label class="form-label" for="default-01">Mot de passe @error('password')
+                        <small style="color:red;">{{$message}}</small>
+
+                    @enderror</label>
+                </div>
+                <div class="form-control-wrap">
+                    <input type="password" name="password" class="form-control form-control-lg" id="default-01" placeholder="Entrer votre mot de passe" required autocomplete="password" autofocus >
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Connexion</button>
+            </div>
+        </form>
+        <div class="form-note-s2 text-center pt-4">
+            <a href="{{route('register')}}"><strong>Vous n'avez pas de compte, Alors Inscrivez-vous !</strong></a>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>

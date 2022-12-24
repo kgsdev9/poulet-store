@@ -3,8 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Article;
+use App\Models\User;
+
+use App\Models\Product;
+
 use Illuminate\Database\Seeder;
+use Database\Factories\TypeArticleFactory;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,9 +19,10 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-       $this->call(TypeArticleSeeder::class );
-            Article::factory(10)->create();
+    {    $this->call(RoleSeeder::class);
+        User::factory(100)->create();
+        $this->call(CategorySeeder::class);
+       Product::factory(50)->create();
 
     }
 }
