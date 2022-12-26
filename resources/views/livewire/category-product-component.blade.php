@@ -1,6 +1,5 @@
 <div>
 
-
     <section class="best-sellers-area pt-75">
         <div class="container">
             <div class="row align-items-end mb-50">
@@ -18,7 +17,7 @@
                     <div class="col-3">
                         <div class="sp-product-item mb-20">
                             <div class="sp-product-thumb">
-                                <span class="batch">New</span>
+                                <span class="batch">{{$ressource->category->name}}</span>
                                 <a href="{{route('product.detail', $ressource->id)}}">
                                     <img src="{{asset('cover/'.$ressource->img_one)}}" alt="" style="height:200px; width:250px;">
                                 </a>

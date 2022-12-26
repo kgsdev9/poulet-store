@@ -31,6 +31,9 @@ $app->singleton(
     App\Http\Kernel::class
 );
 
+
+$app->singleton(\Barryvdh\DomPDF\ServiceProvider::class);
+
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class

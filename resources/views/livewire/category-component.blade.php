@@ -18,10 +18,10 @@
                     <div class="col-3">
                         <div class="sp-product-item mb-20">
                             <div class="sp-product-thumb">
-                          
+
                                 <a href="{{route('category.product', $ressources->id)}}">
 
-                                    <img src="{{asset('categorie/images/'.$ressources->image)}}" alt="">
+                                    <img src="{{asset('categorie/images/'.$ressources->image)}}" alt=""  style="height: 200px; width:200px;">
                                 </a>
                             </div>
                             <div class="sp-product-content">
