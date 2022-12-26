@@ -43,6 +43,7 @@
                                     <input type="number" placeholder="Telephone"  wire:model="phone" >
                                     <textarea name="message"  wire:model="addresse"  id="message" placeholder="Description de votre lieu de livraison"></textarea>
                                     <button   class="btn">Confirmer</button>
+                        
                                 </div>
 
                             </form>

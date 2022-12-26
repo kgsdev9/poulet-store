@@ -15,10 +15,13 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Coeur\LikeProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\UserCOntroller;
 use App\Http\Controllers\Users\OrderviewController;
 use App\Http\Livewire\CategortAppcomponent;
 use App\Http\Livewire\Dashboard\ManagerProduct;
+use App\Http\Livewire\SendOderToWhatshapp;
 use App\Http\Livewire\Storecomponent;
 
 /*
@@ -50,11 +53,12 @@ Route::patch('/users/update/{id}', [RegisteredController::class, 'update'])->nam
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
  Route::get('/categoeries', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/create/category', [CategoryController::class, 'store'])->name('category.store');
-    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-    Route::get('/category/liste', [CategoryController::class, 'liste'])->name('category.liste');
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::get('/category/liste', [CategoryController::class, 'liste'])->name('category.liste');
     Route::patch('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
      Route::get('/orders', OrderComponent::class)->name('oders');
+     Route::get('/orders/whatshap', SendOderToWhatshapp::class)->name('whatshapp');
      Route::get('/dashboard/create/product', [ProductController::class, 'index'])->name('create.newproduct');
     Route::get('/dashboard/product/liste', [ProductController::class, 'create'])->name('product.liste');
     Route::get('/dashboard/product/detail/{id}', [ProductController::class, 'show'])->name('product.dashboard.detail');
@@ -74,6 +78,8 @@ Route::post('/create/category', [CategoryController::class, 'store'])->name('cat
     });
 
 Route::get('/', Welcome::class);
+Route::get('/product/search',[UserController::class,'indexAjax']);
+Route::post('/pages/categories/products',[UserCOntroller::class,'shearchcateProduct'])->name('search.product');
 Route::get('/crete/blog', [blogController::class, 'create'])->name('blog.create');
 Route::post('/create/blog', [blogController::class, 'store'])->name('blog.store');
 Route::get('/blog/edit/{id}', [blogController::class, 'edit'])->name('blog.edit');
@@ -89,6 +95,8 @@ Route::get('/other/product/{id}', OtherProductComponent::class)->name('similar.p
 Route::get('/blog', [HomeController::class, 'viewarticles'])->name('article.index');
 Route::get('/blog/detail/{id}', [HomeController::class, 'detail_articles'])->name('article.detail');
 Route::get('categorie/appscontect', [CategortAppcomponent::class])->name('category.apps');
+
+Route::get('/order/invoice', [PdfController::class, 'index'])->name('render');
 
 
 Route::get('/contact', function(){

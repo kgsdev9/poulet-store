@@ -34,7 +34,11 @@ class Welcome extends Component
             ];
         }
         session()->put('cart', $cart);
+        $this->dispatchBrowserEvent(
+            'alert', ['type' => 'success',  'message' => 'Saved']);
         $this->emit('updateCartCount');
+      
+
     }
 
 

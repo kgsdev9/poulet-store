@@ -85,6 +85,9 @@
                             </div>
                             <div class="continue-shopping">
                                 <a href="{{route('oders')}}" class="btn">Commander le  produit </a>
+
+                                <a href="https://wa.me/+2250708375478?text={{$mycart }}" class="btn rounded-btn" target="_blank">Commander Via Whattsap </a>
+
                             </div>
                         </div>
                     </div>

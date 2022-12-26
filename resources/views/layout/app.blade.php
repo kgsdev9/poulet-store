@@ -7,7 +7,7 @@
         <title>ECOMMMERCE</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
         <!-- Place favicon.ico in the root directory -->
 
@@ -23,9 +23,13 @@
         <link rel="stylesheet" href="{{asset('assets/css/default.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <script src="{{asset('assets/js/ajaxjquery.min.js')}}"></script>
+
         @livewireStyles()
     </head>
-    <body>
+    <body style="font-family: 'Inter', sans-serif;">
 
         {{-- <!-- preloader -->
         <div id="preloader">
@@ -122,12 +126,7 @@
                         </div>
                         <div class="col-xl-10 col-lg-9">
                             <div class="d-block d-sm-flex align-items-center justify-content-end">
-                                <div class="header-search-wrap">
-                                    <form action="#">
-                                        <input type="text" placeholder="Rechercher un produit ...">
-                                        <button><i class="flaticon-loupe-1"></i></button>
-                                    </form>
-                                </div>
+                                @livewire('searchproduct')
                                 <div class="header-action">
                                     <ul>
                                         <li class="header-phone">
@@ -361,9 +360,11 @@
 
 
 
-
 		<!-- JS here -->
         <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
         <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
@@ -377,6 +378,49 @@
         <script src="{{asset('assets/js/aos.js')}}"></script>
         <script src="{{asset('assets/js/plugins.js')}}"></script>
         <script src="{{asset('assets/js/main.js')}}"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+        <script>
+            window.addEventListener('alert', event => {
+                         toastr[event.detail.type](event.detail.message,
+                         event.detail.title ?? '') toastr.options = {
+                                "closeButton": true,
+                                "progressBar": true,
+                            }
+                        })
+             </script>
+
         @livewireScripts()
+
+
+
+
+
+<script>
+    $( function() {
+      var availableTags = [];
+      $.ajax({
+       method:"GET",
+       url:"/product/search",
+       success:function(response){
+
+        startAutocomplete(response);
+       }
+      })
+      function startAutocomplete(availableTags){
+                $( ".searchproducts" ).autocomplete({
+                source: availableTags
+            });
+      }
+    } );
+    ///
+</script>
+
+
+
+<style>
+
+
+</style>
     </body>
 </html>
